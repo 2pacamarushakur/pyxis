@@ -51,6 +51,23 @@ echo "server.ssl.keyAlias=coringa" >> $arquivo
 echo "server.ssl.clientAuth=want" >> $arquivo
 echo "Informações do arquivo config_gix-comum-servicos.shx editadas."
 
+# Mover o arquivo config_gix-comum-servicos.shx da pasta config para a pasta anterior
+origem="/SHX-PYXIS-SPRGB/SHX-EMBARCADO/config/config_gix-comum-servicos.shx"
+destino="/SHX-PYXIS-SPRGB/SHX-EMBARCADO/"
+mv $origem $destino
+echo "Arquivo movido de $origem para $destino"
+
+# Excluir todos os arquivos de dentro da pasta config
+pasta="/SHX-PYXIS-SPRGB/SHX-EMBARCADO/config/"
+rm -rf $pasta*
+echo "Todos os arquivos dentro de $pasta foram excluídos."
+
+# Mover o arquivo config_gix-comum-servicos.shx de volta para a pasta config
+origem="/SHX-PYXIS-SPRGB/SHX-EMBARCADO/config_gix-comum-servicos.shx"
+destino="/SHX-PYXIS-SPRGB/SHX-EMBARCADO/config/"
+mv $origem $destino
+echo "Arquivo movido de $origem para $destino"
+
 # Atualizar o EMBARCADÃO
 cd /SHX-PYXIS-SPRGB/SHX-EMBARCADO/
 wget http://atualizacao.shx.com.br/pyxis/gix-embarcadao/2299/gix-embarcadao.zip --http-user=1564 --http-passwd=3661
